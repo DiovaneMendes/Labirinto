@@ -1,0 +1,12 @@
+
+public class Arma {
+	private int addDano;
+	public Arma(){
+		
+	}
+	
+	public int Adaga(int addDano=1){
+		this.addDano = addDano;
+		return addDano;
+	}
+}

@@ -1,0 +1,32 @@
+
+public class Personagem {
+	private String nome;
+	private int life = 20;
+	private int tipoArma = 1;
+	
+	Arma arma = new Arma();
+
+	public Personagem(){
+		
+	}
+	
+	public void ataque(){
+		switch(tipoArma){
+		case 1: attNormal();
+		break
+		case 2: arma.adaga();
+		break;
+		case 3: arma.faca();
+		break;
+		case 4: arma.espada();
+		break;
+		case 5: arma.espadaLonga();
+		break;
+		}
+	}
+	
+	public void attNormal(){
+		int dano = 2;
+		int acertoAtt = 75;
+	}
+}

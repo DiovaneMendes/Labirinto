@@ -1,0 +1,21 @@
+
+public class Arma {
+	/*int danoAdaga, acertoAdaga;
+	int danoFaca, acertoFaca;
+	int danoEspada, acertoEspada;
+	int danoEspadaLonga, acertoEspadaLonga;*/
+	
+	int dano, acerto;
+	
+	public Arma(){
+		
+	}
+	
+	public void adaga(){
+		
+	}
+	
+	public void addAcertoAtt(){
+		
+	}
+}

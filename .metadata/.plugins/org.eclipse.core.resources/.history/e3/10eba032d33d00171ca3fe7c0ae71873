@@ -1,0 +1,14 @@
+
+public class Personagem {
+	private String nome;
+	private int life = 0;
+	private int dano = 2;
+	private double acertoAtaque = 75;	
+	public Personagem(){
+		
+	}
+	
+	public void ataque(){
+		
+	}
+}

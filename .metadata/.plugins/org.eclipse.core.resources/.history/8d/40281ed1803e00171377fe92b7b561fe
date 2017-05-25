@@ -1,0 +1,7 @@
+
+public class Principal {
+	Personagem personagem = new Personagem();
+	public void run(){
+		personagem.ataque();
+	}
+}

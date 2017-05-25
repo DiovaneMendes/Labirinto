@@ -1,0 +1,11 @@
+
+public class Arma {
+	
+	public Arma(){
+		
+	}
+	
+	public int Adaga(int addDano){
+		
+	}
+}

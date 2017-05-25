@@ -1,0 +1,11 @@
+
+public class Armadura {
+	private int dano;
+	public Armadura(){
+		
+	}
+	
+	public int couro(){
+		return dano = 2;
+	}
+}

@@ -1,0 +1,15 @@
+
+public class Arma {
+	int addDano, addAcertoAtt;
+	public Arma(){
+		
+	}
+	
+	public void addDano(){
+		
+	}
+	
+	public void addAcertoAtt(){
+		
+	}
+}

@@ -1,0 +1,45 @@
+
+public class Personagem {
+	private String nome;
+	private int life = 20;
+	private int tipoArma = 1;
+	private int tipoArmadura;
+	private boolean shield;
+	
+	Arma arma = new Arma();
+	Armadura armadura = new Armadura();
+
+	public Personagem(){
+		
+	}
+	
+	public void armor(){
+		switch(tipoArmadura){
+			case 1: armadura.couro();
+			break;
+			case 2: armadura.metal();
+			break;
+			case 3: armadura.mithril();
+			break;
+		}
+	}
+	
+	public void defesa(){
+		
+	}
+	
+	public void ataque(){
+		switch(tipoArma){
+			case 1: arma.normal();
+			break;
+			case 2: arma.adaga();
+			break;
+			case 3: arma.faca();
+			break;
+			case 4: arma.espada();
+			break;
+			case 5: arma.espadaLonga();
+			break;
+		}
+	}
+}

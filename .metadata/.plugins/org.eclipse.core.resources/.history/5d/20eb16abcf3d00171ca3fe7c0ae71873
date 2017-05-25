@@ -1,0 +1,11 @@
+
+public class Arma {
+	
+	public Arma(){
+		
+	}
+	
+	public void Adaga(){
+		
+	}
+}

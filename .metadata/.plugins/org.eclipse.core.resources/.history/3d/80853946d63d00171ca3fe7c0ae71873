@@ -1,0 +1,12 @@
+
+public class Arma {
+	private int addDano, addAcertoAtt;
+	public Arma(){
+		
+	}
+	
+	public void Adaga(){
+		this.addAcertoAtt = 75;
+		this.addDano = 1;
+	}
+}
