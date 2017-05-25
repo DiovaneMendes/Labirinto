@@ -11,9 +11,7 @@ public class Inimigo {
 	}
 	
 	public void goblin(){
-		switch(personagem.armorEscolhida()){
-		case 0: danoI = 
-		}
+		danoI = 2;
 		//Se o personagem tem escudo
 		if(personagem.defesa()){
 			acertoI = 55;
