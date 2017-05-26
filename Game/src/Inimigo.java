@@ -11,8 +11,11 @@ public class Inimigo {
 	}
 	
 	public void goblin(){
-		switch(personagem.armorEscolhida()){
-		case 0: danoI = 
+		//Define a armadura e o dano 
+		if(personagem.armorEscolhida()==0){
+			danoI = 2;
+		}else{
+			danoI = 0;
 		}
 		//Se o personagem tem escudo
 		if(personagem.defesa()){
@@ -28,7 +31,16 @@ public class Inimigo {
 	}
 	
 	public void orc(){
-		danoI = 4;
+		//Define a armadura e o dano 
+		switch(personagem.armorEscolhida()){
+			case 0: danoI = 4;
+			break;
+			case 1: danoI = 2;
+			break;
+			case 2: danoI = 1;
+			break;
+			case 3: danoI = 0;
+		}
 		//Se o personagem tem escudo
 		if(personagem.defesa()){
 			acertoI = 50;
@@ -43,7 +55,16 @@ public class Inimigo {
 	}
 	
 	public void troll(){
-		danoI = 6;
+		//Define a armadura e o dano 
+		switch(personagem.armorEscolhida()){
+		case 0: danoI = 6;
+		break;
+		case 1: danoI = 4;
+		break;
+		case 2: danoI = 3;
+		break;
+		case 3: danoI = 1;
+	}
 		//Se o personagem tem escudo
 		if(personagem.defesa()){
 			acertoI = 25;
