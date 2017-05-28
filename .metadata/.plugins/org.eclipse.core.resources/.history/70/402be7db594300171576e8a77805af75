@@ -1,0 +1,13 @@
+package applications;
+
+import java.io.FileReader;
+import java.util.Scanner;
+
+public class Teste {
+	FileReader texto = new FileReader("coordenadas.txt");
+	Scanner ler = new Scanner(texto).useDelimiter("\n");
+		while (scanner.hasNext()) {
+			String nome = ler.next();
+			System.out.println(nome);
+		}
+}

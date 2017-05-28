@@ -1,0 +1,16 @@
+package applications;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
+
+public class Teste {
+	public static void main(String args[]) throws FileNotFoundException{
+	FileReader texto = new FileReader("coordenadas.txt");
+	Scanner ler = new Scanner(texto).useDelimiter("\n");
+		while (ler.hasNext()) {
+			String nome = ler.next();
+			System.out.println(nome);
+		}
+}
+}
