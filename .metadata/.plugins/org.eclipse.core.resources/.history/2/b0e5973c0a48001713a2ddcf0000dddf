@@ -1,0 +1,15 @@
+package model;
+
+import com.senac.SimpleJava.Graphics.Color;
+import com.senac.SimpleJava.Graphics.Resolution;
+import com.senac.SimpleJava.Graphics.Sprite;
+
+public class Labirinto extends Sprite {
+	
+	public Labirinto(){
+		super(25, 5, Color.BLUE);
+		super.setPosition(
+			Resolution.MSX.width + 20,
+			Resolution.MSX.height);
+	}
+}

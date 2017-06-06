@@ -1,6 +1,0 @@
-
-public class Personagem {
-	private String nome;
-	private int life = 0;
-	
-}

@@ -1,0 +1,40 @@
+package model;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
+
+public class Sala {
+	public String modeloSala[] = new String [31];
+	private int nSala;
+	public Sala(){
+		
+	}
+	
+	public void criandoSala(){
+		if(modeloSala[0]){
+			
+		}
+	}
+	
+	
+	
+	//Leitura de arquivo txt
+	public void lendo() throws FileNotFoundException{
+		
+		//Chama o arquivo txt
+		FileReader texto = new FileReader("coordenadas.txt");
+		
+		//Scanner para ler o arquivo acima e "useDelimiter" 
+		//para saber onde o texto deve ter quebra de linha
+		Scanner ler = new Scanner(texto).useDelimiter("\n");
+		
+		//"hasNext" para ler linha por linha
+		while (ler.hasNext()) {
+			int i=0;
+			i++;
+			String nome = ler.next();
+			modeloSala[i] = nome;
+		}
+	}
+}

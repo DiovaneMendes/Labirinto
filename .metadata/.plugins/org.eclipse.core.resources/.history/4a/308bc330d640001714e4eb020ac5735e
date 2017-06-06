@@ -1,9 +1,0 @@
-
-public class Principal {
-	Personagem personagem = new Personagem();
-	Inimigo inimigo = new Inimigo();
-	
-	public void run(){
-		personagem.ataque();
-	}
-}

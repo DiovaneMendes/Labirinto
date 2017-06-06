@@ -1,0 +1,183 @@
+package model;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
+
+public class Sala {
+	public String modeloSala[] = new String [31];
+	private String nSala = "1";
+	private Porta porta = new Porta();
+	public Sala(){
+		
+	}
+	
+	//Leitura de arquivo txt
+	public void lendo() throws FileNotFoundException{
+			
+		//Chama o arquivo txt
+		FileReader texto = new FileReader("coordenadas.txt");
+		
+		//Scanner para ler o arquivo acima e "useDelimiter" 
+		//para saber onde o texto deve ter quebra de linha
+		Scanner ler = new Scanner(texto).useDelimiter("\n");
+		
+		//"hasNext" para ler linha por linha
+		while (ler.hasNext()) {
+			int i=0;
+			i++;
+			String nome = ler.next();
+			modeloSala[i] = nome;
+		}
+	}
+	
+	//Criando as salas do jogo
+	public void criandoSala(){
+		for (int i=0; i<=31; i++){
+			if(modeloSala[i].toLowerCase().contains("south".toLowerCase()) && 
+				modeloSala[i].toLowerCase().contains("east".toLowerCase())){
+				
+				porta.south();
+				porta.east();
+			}
+			else if(modeloSala[i].substring(4, 5) == nSala){
+				porta.east();
+				porta.west();
+			}
+			else if(modeloSala[i].substring(4, 5) == nSala){
+				porta.south();
+				porta.east();
+				porta.west();
+			}
+			else if(modeloSala[i].substring(4, 5) == nSala){
+				porta.south();
+				porta.east();
+				porta.west();
+			}
+			else if(modeloSala[i].substring(4, 5) == nSala){
+				porta.south();
+				porta.west();
+			}
+			else if(modeloSala[i].substring(4, 5) == nSala){
+				porta.north();
+				porta.south();
+				porta.west();
+			}
+			else if(modeloSala[i].substring(4, 5) == nSala){
+				porta.north();
+				porta.east();
+				porta.west();
+			}
+			else if(modeloSala[i].substring(4, 5) == nSala){
+				porta.north();
+				porta.south();
+				porta.east();
+				porta.up();
+			}
+			else if(modeloSala[i].substring(4, 5) == nSala){
+				porta.north();
+				porta.south();
+				porta.west();
+			}
+			else if(modeloSala[i].substring(4, 6) == nSala){
+				porta.north();
+				porta.south();
+				porta.east();
+			}
+			else if(modeloSala[i].substring(4, 6) == nSala){
+				porta.east();
+				porta.west();
+				porta.up();
+			}
+			else if(modeloSala[i].substring(4, 6) == nSala){
+				porta.west();
+				porta.north();
+				porta.south();
+			}
+			else if(modeloSala[i].substring(4, 6) == nSala){
+				porta.north();
+				porta.south();
+			}
+			else if(modeloSala[i].substring(4, 6) == nSala){
+				porta.north();
+				porta.south();
+			}
+			else if(modeloSala[i].substring(4, 6) == nSala){
+				porta.east();
+				porta.west();
+				porta.up();
+				porta.north();
+			}
+			else if(modeloSala[i].substring(4, 6) == nSala){
+				porta.east();
+				porta.west();
+			}
+			else if(modeloSala[i].substring(4, 6) == nSala){
+				porta.west();
+				porta.north();
+				porta.south();
+			}
+			else if(modeloSala[i].substring(4, 6) == nSala){
+				porta.east();
+				porta.west();
+				porta.up();
+				porta.north();
+				porta.south();
+			}
+			else if(modeloSala[i].substring(4, 6) == nSala){
+				porta.east();
+				porta.west();
+				porta.south();
+			}
+			else if(modeloSala[i].substring(4, 6) == nSala){
+				porta.east();
+			}
+			else if(modeloSala[i].substring(4, 6) == nSala){
+				porta.east();
+			}
+			else if(modeloSala[i].substring(4, 6) == nSala){
+				porta.east();
+				porta.west();
+				porta.down();
+				porta.north();
+			}
+			else if(modeloSala[i].substring(4, 6) == nSala){
+				porta.east();
+				porta.south();
+			}
+			else if(modeloSala[i].substring(4, 6) == nSala){
+				porta.west();
+				porta.down();
+				porta.south();
+			}
+			else if(modeloSala[i].substring(4, 6) == nSala){
+				porta.east();
+				porta.down();
+				porta.north();
+			}
+			else if(modeloSala[i].substring(4, 6) == nSala){
+				porta.west();
+				porta.north();
+			}
+			else if(modeloSala[i].substring(4, 6) == nSala){
+				porta.east();
+			}
+			else if(modeloSala[i].substring(4, 6) == nSala){
+				porta.east();
+				porta.west();
+				porta.down();
+				porta.north();
+				porta.south();
+			}
+			else if(modeloSala[i].substring(4, 6) == nSala){
+				porta.west();
+			}
+			else if(modeloSala[i].substring(4, 6) == nSala){
+				porta.south();
+			}
+			else if(modeloSala[i].substring(4, 6) == nSala){
+				porta.north();
+			}
+		}
+	}
+}
