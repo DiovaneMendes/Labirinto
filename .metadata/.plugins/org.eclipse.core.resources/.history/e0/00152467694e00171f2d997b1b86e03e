@@ -1,0 +1,61 @@
+package applications;
+
+
+
+import com.senac.SimpleJava.Graphics.Color;
+import com.senac.SimpleJava.Graphics.Resolution;
+import com.senac.SimpleJava.Graphics.Sprite;
+
+public class Porta{
+	Sprite p1, p2, p3, p4, p5, p6;
+	
+	public Porta(String puerta){
+		if(puerta.equals("east")){
+			p1 = new Sprite(2, 10, Color.BLUE);
+			p1.setPosition(
+				Resolution.MSX.width/10-25,
+				Resolution.MSX.height-160);
+			
+		}
+		if(puerta.equals("west")){
+			p2 = new Sprite(2, 10, Color.BLUE);
+			p2.setPosition(
+				Resolution.MSX.width/5+20,
+				Resolution.MSX.height-160);
+			
+		}
+		if(puerta.equals("north")){
+			p3 = new Sprite(10, 2, Color.BLUE);
+			p3.setPosition(
+				Resolution.MSX.width/5-2,
+				Resolution.MSX.height-192);
+		
+		}
+		if(puerta.equals("south")){
+			p4 = new Sprite(10, 2, Color.BLUE);
+			p4.setPosition(
+				Resolution.MSX.width/5-2,
+				Resolution.MSX.height-122);
+			
+		}
+		if(puerta.equals("up")){
+			p5 = new Sprite(10, 2, Color.BLUE);
+			p5.setPosition(
+				Resolution.MSX.width/4-50,
+				Resolution.MSX.height-192);
+			
+		}
+		if(puerta.equals("down")){
+			p6 = new Sprite(10, 2, Color.BLUE);
+			p6.setPosition(
+				Resolution.MSX.width/4-50,
+				Resolution.MSX.height-122);
+			
+		}
+	}
+
+	public void draw() {
+		// TODO Auto-generated method stub
+		
+	}
+}

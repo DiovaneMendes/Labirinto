@@ -1,0 +1,87 @@
+package applications;
+
+
+
+import com.senac.SimpleJava.Graphics.Color;
+import com.senac.SimpleJava.Graphics.Resolution;
+import com.senac.SimpleJava.Graphics.Sprite;
+
+public class Porta{
+	Sprite p0;
+	
+	
+	public Porta(){
+		
+	}
+	
+	public Sprite north(){
+		p0 = new Sprite(10, 2, Color.BLUE);
+		p0.setPosition(
+			Resolution.MSX.width/5-2,
+			Resolution.MSX.height-192);
+		return p0;
+	}
+	
+	public Sprite south(){
+		
+		return p0;
+	}
+	
+	public Sprite east(){
+		
+		return p0;
+	}
+	
+	public Sprite west(){
+		
+		return p0;
+	}
+	
+	public Sprite up(){
+		
+		return p0;
+	}
+	
+	public Sprite down(){
+		
+		return p0;
+	}
+	/*public Porta(String entrada){
+		if(entrada.equals("east")){
+			p0 = new Sprite(2, 10, Color.BLUE);
+			p0.setPosition(
+				Resolution.MSX.width/10-25,
+				Resolution.MSX.height-160);
+		}
+		if(entrada.equals("west")){
+			p0 = new Sprite(2, 10, Color.BLUE);
+			p0.setPosition(
+				Resolution.MSX.width/5+20,
+				Resolution.MSX.height-160);
+		}
+		if(entrada.equals("north")){
+			p0 = new Sprite(10, 2, Color.BLUE);
+			p0.setPosition(
+				Resolution.MSX.width/5-2,
+				Resolution.MSX.height-192);
+		}
+		if(entrada.equals("south")){
+			p0 = new Sprite(10, 2, Color.BLUE);
+			p0.setPosition(
+				Resolution.MSX.width/5-2,
+				Resolution.MSX.height-122);
+		}
+		if(entrada.equals("up")){
+			p0 = new Sprite(10, 2, Color.BLUE);
+			p0.setPosition(
+				Resolution.MSX.width/4-50,
+				Resolution.MSX.height-192);
+		}
+		if(entrada.equals("down")){
+			p0 = new Sprite(10, 2, Color.BLUE);
+			p0.setPosition(
+				Resolution.MSX.width/4-50,
+				Resolution.MSX.height-122);
+		}
+	}*/
+}

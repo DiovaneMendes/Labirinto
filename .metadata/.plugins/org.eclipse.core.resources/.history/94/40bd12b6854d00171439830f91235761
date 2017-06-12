@@ -1,0 +1,41 @@
+package model;
+
+public class Sala{
+	private Porta entradaEast, entradaWest, entradaNorth, entradaSouth, entradaDown, entradaUp;
+	private int numeroSala;
+	private String north, south, east, west, up, down;
+	
+	public Sala(int numeroSala, String north, String south, String up, String down, String east, String west){
+		this.numeroSala = numeroSala;
+		this.north = north;
+		this.south = south;
+		this.east = east;
+		this.west = west;
+		this.up = up;
+		this.down = down;
+		portaSala();
+		
+	}
+	
+	public void portaSala(){
+		
+		if (north != null){
+			entradaNorth = new Porta("north");
+		}
+		if (south != null){
+			entradaSouth = new Porta("south");
+		}
+		if (east != null){
+			entradaEast = new Porta("east");
+		}
+		if (west != null){
+			entradaWest = new Porta("west");
+		}
+		if (up != null){
+			entradaUp = new Porta("up");
+		}
+		if (down != null){
+			entradaDown = new Porta("down");
+		}
+	}
+}

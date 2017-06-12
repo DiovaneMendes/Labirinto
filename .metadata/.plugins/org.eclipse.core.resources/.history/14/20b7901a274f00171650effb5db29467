@@ -1,0 +1,57 @@
+package applications;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
+
+import com.senac.SimpleJava.Console;
+
+import applications.Sala;
+
+public class LeituraDeArquivo {
+	
+	@SuppressWarnings("resource")
+	public void lendoArquivo(){
+		Sala sala[] = null;
+		String linha[] = new String[31];
+		FileReader texto = null;
+		Scanner ler = null;
+		int i = 0;
+		
+		try{
+			texto = new FileReader("coordenadas.txt");
+			ler = new Scanner(texto).useDelimiter("\n");
+		}catch (FileNotFoundException e){
+			Console.print("");
+		}
+		
+		while (ler.hasNext()) {
+			String north = null, south = null, east = null, west = null, up = null, down = null ;
+			linha[i] = ler.next();
+				
+			if(linha[i].contains("north")){
+				north = "north";
+			}
+			if(linha[i].contains("south")){
+				south = "south";
+			}
+			if(linha[i].contains("east")){
+				east = "east";
+			}
+			if(linha[i].contains("west")){
+				west = "west";
+			}
+			if(linha[i].contains("up")){
+				up = "up";
+			}
+			if(linha[i].contains("down")){
+				down = "down";
+			}
+			
+		sala[i] = new Sala (north, south, east, west, up, down);
+		i++;
+	}
+}
+}

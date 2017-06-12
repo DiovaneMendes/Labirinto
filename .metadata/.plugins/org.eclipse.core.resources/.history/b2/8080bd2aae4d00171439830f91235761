@@ -1,0 +1,94 @@
+package applications;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
+
+import com.senac.SimpleJava.Console;
+
+import applications.Sala;
+
+public class LeituraDeArquivo {
+	
+	//Aponta o caminho do arquivo
+	private File texto = new File("coordenadas.txt");
+	
+	private Sala sala[];
+	private Scanner ler;
+	private String lendo;
+	private int i = 0;
+	
+	String north = null, south = null, east = null, west = null, up = null, down = null ;
+	
+	
+	public LeituraDeArquivo(){
+		
+	}
+	
+	public void excecao() throws FileNotFoundException{
+		ler = new Scanner(texto);
+		lendo  = ler.next();
+		
+		//Trata de um erro, no caso do metodo que colhe os dados do arquivo
+		try {
+			lerTexto();
+		} catch (NoSuchElementException e) {
+			Console.println("");
+		}
+	}
+
+	
+	public Sala lerTexto() {
+		
+		while (ler.hasNext()) {
+			if (lendo.equals("room")) {
+				if (i <= 31) {
+					i ++;
+				}
+				lendo = ler.next();
+				Console.println("Sala: "+i);
+				lendo = ler.next();
+			}
+			
+			if (lendo.equals("north")) {
+				north = lendo;
+				lendo = ler.next();
+				Console.println("North " + lendo);
+				lendo = ler.next();
+			}
+			else if (lendo.equals("south")) {
+				south = lendo;
+				lendo = ler.next();
+				Console.println("South " + lendo);
+				lendo = ler.next();
+			}			
+			else if (lendo.equals("east")) {
+				east = lendo;
+				lendo = ler.next();
+				Console.println("East " + lendo);
+				lendo = ler.next();
+			}
+			else if (lendo.equals("west")) {
+				west = lendo;
+				lendo = ler.next();
+				Console.println("West " + lendo);
+				lendo = ler.next();
+			}
+			else if (lendo.equals("up")) {
+				up = lendo;
+				lendo = ler.next();
+				Console.println("Up " + lendo);
+				lendo = ler.next();
+			}
+			else if (lendo.equals("down")) {
+				down = lendo;
+				lendo = ler.next();
+				Console.println("Down " + lendo);
+				lendo = ler.next();
+			}
+
+		}
+		return 			sala[i] = new Sala(north, south, east, west, up, down);
+	}
+}

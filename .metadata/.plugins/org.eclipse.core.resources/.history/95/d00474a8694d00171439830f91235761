@@ -1,0 +1,11 @@
+package model;
+
+public class Sala{
+	private int numeroSala;
+	private Vetor <Porta> porta;
+	
+	public Sala(int numeroSala, Vetor <Porta> porta){
+		this.numeroSala = numeroSala;
+		this.porta = porta;
+	}
+}
