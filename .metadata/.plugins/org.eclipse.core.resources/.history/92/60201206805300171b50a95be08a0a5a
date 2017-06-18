@@ -1,0 +1,15 @@
+package applications;
+
+public class Sala{
+	Porta puerta = new Porta();
+	String north, south, east, west, up, down;
+	
+	public Sala(String north, String south, String east, String west, String up, String down){
+		this.north = north;
+		this.south = south;
+		this.east = east;
+		this.west = west;
+		this.up = up;
+		this.down = down;
+	}
+}

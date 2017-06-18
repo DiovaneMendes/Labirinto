@@ -8,43 +8,74 @@ import java.util.Scanner;
 
 import com.senac.SimpleJava.Console;
 import com.senac.SimpleJava.Graphics.Canvas;
-import com.senac.SimpleJava.Graphics.Color;
 import com.senac.SimpleJava.Graphics.GraphicApplication;
 import com.senac.SimpleJava.Graphics.Point;
 import com.senac.SimpleJava.Graphics.Resolution;
 import com.senac.SimpleJava.Graphics.events.MouseEvent;
 import com.senac.SimpleJava.Graphics.events.MouseObserver;
 
-import controller.EventoDoMouse;
-
 public class Principal
 	extends GraphicApplication // Para aplicacoes graficas com SimpleJava
 	implements MouseObserver // Para responder a eventos de mouse na propria applicacao
-{
-	private Point point = null;
-	private Point center = null;
+	{
 	private Porta porta = new Porta();
-	
-	Sala sala[] = new Sala [31];
-	private boolean red = false;
+	private Sala sala[] = new Sala [32];
 	private Random gerador = new Random();
-	private int numeroAleatorio = gerador.nextInt(31);
+	private int numeroAleatorio = 5;//gerador.nextInt(31);
 	
+	
+	
+	
+	
+	//DANDO ERRO 
+	//==============================CLICK===================================
 	@Override
 	public void notify(MouseEvent event, int button, Point point) {
-		// ajusta posicao final da linha.
 		if (event == MouseEvent.CLICK) {
-			this.point = point;
-		}
-		if (event == MouseEvent.DOUBLECLICK) {
-			red = ! red;
+			//north
+			if(sala[numeroAleatorio].north != null && 
+				porta.northX+10 > point.x && porta.northX < point.x+1 &&
+				porta.northY+2 > point.y && porta.northY < point.y+2){
+					numeroAleatorio = sala[numeroAleatorio].clickNorth;
+			}
+			//south
+			if(sala[numeroAleatorio].south != null && 
+				porta.southX+10 > point.x && porta.southX < point.x+1 &&
+				porta.southY+2 > point.y && porta.southY < point.y+2){ 
+					numeroAleatorio = sala[numeroAleatorio].clickSouth;
+			}
+			//east
+			if(sala[numeroAleatorio].east != null && 
+				porta.eastX+2 > point.x && porta.eastX < point.x+2 &&
+				porta.eastY+10 > point.y && porta.eastY < point.y+1){ 
+					numeroAleatorio = sala[numeroAleatorio].clickEast;
+			}
+			//west
+			if(sala[numeroAleatorio].west != null && 
+				porta.westX+2 > point.x && porta.westX < point.x+2 &&
+				porta.westY+10 > point.y && porta.westY < point.y+1){ 
+					numeroAleatorio = sala[numeroAleatorio].clickWest;
+					Console.println(sala[numeroAleatorio].clickWest);
+			}
+			//up
+			if(sala[numeroAleatorio].up != null && 
+				porta.upX+10 > point.x && porta.upX < point.x+1 &&
+				porta.upY+2 > point.y && porta.upY < point.y+2){
+					numeroAleatorio = sala[numeroAleatorio].clickUp;
+			}
+			//down
+			if(sala[numeroAleatorio].down != null && 
+				porta.downX+10 > point.x && porta.downX < point.x+1 &&
+				porta.downY+2 > point.y && porta.downY < point.y+2){
+					numeroAleatorio = sala[numeroAleatorio].clickDown;
+			}
 		}
 	}
 	//==============================DRAW====================================
 	@Override
 	protected void draw(Canvas canvas) {
 		canvas.clear();
-		canvas.drawLine(this.center, this.point);
+		//canvas.drawLine(this.center, this.point);
 		
 
 		if(sala[numeroAleatorio].north != null){
@@ -94,8 +125,10 @@ public class Principal
 		setResolution(Resolution.LOWRES);
 		int x = getResolution().width / 2;
 		int y = getResolution().height / 2;
-		this.center = new Point(x,y);
-		this.point = center;
+		
+		
+		/*this.center = new Point(x,y);
+		this.point = center;*/
 		
 		addMouseObserver(MouseEvent.CLICK, this);
 		
@@ -109,6 +142,7 @@ public class Principal
 			FileReader texto = null;
 			Scanner ler = null;
 			int i = 0;
+			String clickSala;
 			
 			try{
 				texto = new FileReader("coordenadas.txt");
@@ -119,28 +153,42 @@ public class Principal
 			
 			while (ler.hasNext()) {
 				String north = null, south = null, east = null, west = null, up = null, down = null ;
+				int clickNorth = 0, clickSouth = 0, clickEast = 0, clickWest = 0, clickUp = 0, clickDown = 0;
+				
 				linha[i] = ler.next();
-					
 				if(linha[i].contains("north")){
 					north = "north";
+					//PEGANDO O NUMERO DA QUE DEVE IR QUAND O FOR CLICADO
+					clickSala = linha[i].substring(linha[i].indexOf("north")+6, linha[i].indexOf("north")+8);
+					clickNorth = Integer.parseInt(clickSala.replaceAll("[^0-9]*", ""));
 				}
 				if(linha[i].contains("south")){
 					south = "south";
+					clickSala = linha[i].substring(linha[i].indexOf("south")+6, linha[i].indexOf("south")+8);
+					clickSouth = Integer.parseInt(clickSala.replaceAll("[^0-9]*", ""));
 				}
 				if(linha[i].contains("east")){
 					east = "east";
+					clickSala = linha[i].substring(linha[i].indexOf("east")+5, linha[i].indexOf("east")+7);
+					clickEast = Integer.parseInt(clickSala.replaceAll("[^0-9]*", ""));
 				}
 				if(linha[i].contains("west")){
 					west = "west";
+					clickSala = linha[i].substring(linha[i].indexOf("west")+5, linha[i].indexOf("west")+7);
+					clickWest = Integer.parseInt(clickSala.replaceAll("[^0-9]*", ""));
 				}
 				if(linha[i].contains("up")){
 					up = "up";
+					clickSala = linha[i].substring(linha[i].indexOf("up")+3, linha[i].indexOf("up")+6);
+					clickUp = Integer.parseInt(clickSala.replaceAll("[^0-9]*", ""));
 				}
 				if(linha[i].contains("down")){
 					down = "down";
+					clickSala = linha[i].substring(linha[i].indexOf("down")+5, linha[i].indexOf("down")+7);
+					clickDown = Integer.parseInt(clickSala.replaceAll("[^0-9]*", ""));
 				}
 				
-			sala[i] = new Sala (north, south, east, west, up, down);
+			sala[i] = new Sala (north, clickNorth, south, clickSouth, east, clickEast, west, clickWest, up, clickUp, down, clickDown);
 			i++;
 		}
 	}

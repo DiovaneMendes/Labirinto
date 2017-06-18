@@ -1,0 +1,15 @@
+public class Diovane {
+    public static void main(String[] args) {
+        List<String> emails = new ArrayList<String>();
+        emails.add("alfredo@hotmail.com.br");
+        emails.add("alfredo@gmail.com.br");
+        emails.add("alfredo@bol.com.br");
+        emails.add("alfredo@yahoo.com.br");
+        emails.add("alfredo@ig.com.br");
+        emails.add("alfredo@oi.com.br");
+        for (String email : emails) {
+            System.out.println("Provedor:");
+            System.out.println(email.substring(email.indexOf("@") + 1, email.indexOf(".", email.indexOf("@"))));
+        }
+    }
+}

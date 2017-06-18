@@ -12,4 +12,8 @@
 <fullyQualifiedTypeName name="com.senac.SimpleJava.Graphics.Point"/>
 <fullyQualifiedTypeName name="model.Sala"/>
 <fullyQualifiedTypeName name="java.io.FileReader"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="applications.Porta"/>
 </qualifiedTypeNameHistroy>
