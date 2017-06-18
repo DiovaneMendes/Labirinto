@@ -63,7 +63,7 @@ public class LeituraDeArquivo {
 				clickDown = Integer.parseInt(clickSala.replaceAll("[^0-9]*", ""));
 			}
 			
-		//sala[i] = new Sala (north, clickNorth, south, clickSouth, east, clickEast, west, clickWest, up, clickUp, down, clickDown);
+		sala[i] = new Sala (north, clickNorth, south, clickSouth, east, clickEast, west, clickWest, up, clickUp, down, clickDown);
 		i++;
 		}
 	}

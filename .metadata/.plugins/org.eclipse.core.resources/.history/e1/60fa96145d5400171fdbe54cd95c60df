@@ -44,36 +44,24 @@ public class Principal
 				porta.southX+10 > point.x && porta.southX < point.x+1 &&
 				porta.southY+2 > point.y && porta.southY < point.y+2){ 
 					numeroAleatorio = sala[numeroAleatorio].clickSouth;
-					if(numeroAleatorio==0){
-						 JOptionPane.showMessageDialog(null,"PARABENS, VOCE VENCEU O LABIRINTO!");
-					}
 			}
 			//east
 			if(sala[numeroAleatorio].east != null && 
 				porta.eastX+2 > point.x && porta.eastX < point.x+2 &&
 				porta.eastY+10 > point.y && porta.eastY < point.y+1){ 
 					numeroAleatorio = sala[numeroAleatorio].clickEast;
-					if(numeroAleatorio==0){
-						 JOptionPane.showMessageDialog(null,"PARABENS, VOCE VENCEU O LABIRINTO!");
-					}
 			}
 			//west
 			if(sala[numeroAleatorio].west != null && 
 				porta.westX+2 > point.x && porta.westX < point.x+2 &&
 				porta.westY+10 > point.y && porta.westY < point.y+1){ 
 					numeroAleatorio = sala[numeroAleatorio].clickWest;
-					if(numeroAleatorio==0){
-						 JOptionPane.showMessageDialog(null,"PARABENS, VOCE VENCEU O LABIRINTO!");
-					}
 			}
 			//up
 			if(sala[numeroAleatorio].up != null && 
 				porta.upX+10 > point.x && porta.upX < point.x+1 &&
 				porta.upY+2 > point.y && porta.upY < point.y+2){
 					numeroAleatorio = sala[numeroAleatorio].clickUp;
-					if(numeroAleatorio==0){
-						 JOptionPane.showMessageDialog(null,"PARABENS, VOCE VENCEU O LABIRINTO!");
-					}
 			}
 			//down
 			if(sala[numeroAleatorio].down != null && 
@@ -81,9 +69,6 @@ public class Principal
 				porta.downY+2 > point.y && porta.downY < point.y+2){
 					numeroAleatorio = sala[numeroAleatorio].clickDown;
 					Console.println(sala[numeroAleatorio].clickDown);
-					if(numeroAleatorio==0){
-						 JOptionPane.showMessageDialog(null,"PARABENS, VOCE VENCEU O LABIRINTO!");
-					}
 			}
 		}
 	}

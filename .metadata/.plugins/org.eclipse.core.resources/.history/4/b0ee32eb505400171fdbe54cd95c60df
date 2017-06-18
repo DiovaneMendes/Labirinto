@@ -1,0 +1,23 @@
+package applications;
+
+public class Sala{
+	Porta puerta = new Porta();
+	String north, south, east, west, up, down;
+	int room, clickNorth, clickSouth, clickEast, clickWest, clickUp, clickDown;
+	
+	public Sala(int room, String north, int clickNorth, String south, int clickSouth, String east, int clickEast, String west, int clickWest, String up, int clickUp, String down, int clickDown){
+		this.room = room;
+		this.north = north;
+		this.clickNorth = clickNorth;
+		this.south = south;
+		this.clickSouth = clickSouth;
+		this.east = east;
+		this.clickEast = clickEast;
+		this.west = west;
+		this.clickWest = clickWest;
+		this.up = up;
+		this.clickUp = clickUp;
+		this.down = down;
+		this.clickDown = clickDown;
+	}
+}

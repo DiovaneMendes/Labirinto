@@ -1081,3 +1081,12 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.debug.core 4 120 2017-06-18 15:41:48.099
+!MESSAGE Variable references empty selection: ${java_type_name}
+
+!ENTRY org.eclipse.debug.core 4 120 2017-06-18 16:07:41.293
+!MESSAGE Variable references empty selection: ${java_type_name}
+
+!ENTRY org.eclipse.debug.core 4 120 2017-06-18 16:11:05.676
+!MESSAGE Variable references empty selection: ${java_type_name}

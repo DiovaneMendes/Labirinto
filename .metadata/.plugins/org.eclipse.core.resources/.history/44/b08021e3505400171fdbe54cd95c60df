@@ -6,8 +6,6 @@ import java.io.FileReader;
 import java.util.Random;
 import java.util.Scanner;
 
-import javax.swing.JOptionPane;
-
 import com.senac.SimpleJava.Console;
 import com.senac.SimpleJava.Graphics.Canvas;
 import com.senac.SimpleJava.Graphics.GraphicApplication;
@@ -23,67 +21,53 @@ public class Principal
 	private Porta porta = new Porta();
 	private Sala sala[] = new Sala [32];
 	private Random gerador = new Random();
-	private int numeroAleatorio = gerador.nextInt(31);
+	private int numeroAleatorio = 5;//gerador.nextInt(31);
 	
 	
+	
+	
+	
+	//DANDO ERRO 
 	//==============================CLICK===================================
 	@Override
 	public void notify(MouseEvent event, int button, Point point) {
-		if (event == MouseEvent.CLICK){
+		if (event == MouseEvent.CLICK) {
 			//north
 			if(sala[numeroAleatorio].north != null && 
 				porta.northX+10 > point.x && porta.northX < point.x+1 &&
 				porta.northY+2 > point.y && porta.northY < point.y+2){
 					numeroAleatorio = sala[numeroAleatorio].clickNorth;
-					if(numeroAleatorio==0){
-						 JOptionPane.showMessageDialog(null,"PARABENS, VOCE VENCEU O LABIRINTO!");
-					}
 			}
 			//south
 			if(sala[numeroAleatorio].south != null && 
 				porta.southX+10 > point.x && porta.southX < point.x+1 &&
 				porta.southY+2 > point.y && porta.southY < point.y+2){ 
 					numeroAleatorio = sala[numeroAleatorio].clickSouth;
-					if(numeroAleatorio==0){
-						 JOptionPane.showMessageDialog(null,"PARABENS, VOCE VENCEU O LABIRINTO!");
-					}
 			}
 			//east
 			if(sala[numeroAleatorio].east != null && 
 				porta.eastX+2 > point.x && porta.eastX < point.x+2 &&
 				porta.eastY+10 > point.y && porta.eastY < point.y+1){ 
 					numeroAleatorio = sala[numeroAleatorio].clickEast;
-					if(numeroAleatorio==0){
-						 JOptionPane.showMessageDialog(null,"PARABENS, VOCE VENCEU O LABIRINTO!");
-					}
 			}
 			//west
 			if(sala[numeroAleatorio].west != null && 
 				porta.westX+2 > point.x && porta.westX < point.x+2 &&
 				porta.westY+10 > point.y && porta.westY < point.y+1){ 
 					numeroAleatorio = sala[numeroAleatorio].clickWest;
-					if(numeroAleatorio==0){
-						 JOptionPane.showMessageDialog(null,"PARABENS, VOCE VENCEU O LABIRINTO!");
-					}
+					Console.println(sala[numeroAleatorio].clickWest);
 			}
 			//up
 			if(sala[numeroAleatorio].up != null && 
 				porta.upX+10 > point.x && porta.upX < point.x+1 &&
 				porta.upY+2 > point.y && porta.upY < point.y+2){
 					numeroAleatorio = sala[numeroAleatorio].clickUp;
-					if(numeroAleatorio==0){
-						 JOptionPane.showMessageDialog(null,"PARABENS, VOCE VENCEU O LABIRINTO!");
-					}
 			}
 			//down
 			if(sala[numeroAleatorio].down != null && 
 				porta.downX+10 > point.x && porta.downX < point.x+1 &&
 				porta.downY+2 > point.y && porta.downY < point.y+2){
 					numeroAleatorio = sala[numeroAleatorio].clickDown;
-					Console.println(sala[numeroAleatorio].clickDown);
-					if(numeroAleatorio==0){
-						 JOptionPane.showMessageDialog(null,"PARABENS, VOCE VENCEU O LABIRINTO!");
-					}
 			}
 		}
 	}
@@ -167,11 +151,10 @@ public class Principal
 				Console.print("");
 			}
 			
-			sala[0] = new Sala (null, 0, null, 0, null, 0, null, 0, null, 0, null, 0);
-
 			while (ler.hasNext()) {
 				String north = null, south = null, east = null, west = null, up = null, down = null ;
 				int room = 0, clickNorth = 0, clickSouth = 0, clickEast = 0, clickWest = 0, clickUp = 0, clickDown = 0;
+				
 				linha[i] = ler.next();
 				
 				if(linha[i].contains("room")){
@@ -180,6 +163,7 @@ public class Principal
 				}
 				if(linha[i].contains("north")){
 					north = "north";
+					//PEGANDO O NUMERO DA QUE DEVE IR QUAND O FOR CLICADO
 					clickSala = linha[i].substring(linha[i].indexOf("north")+6, linha[i].indexOf("north")+8);
 					clickNorth = Integer.parseInt(clickSala.replaceAll("[^0-9]*", ""));
 				}
@@ -208,8 +192,8 @@ public class Principal
 					clickSala = linha[i].substring(linha[i].indexOf("down")+5, linha[i].indexOf("down")+7);
 					clickDown = Integer.parseInt(clickSala.replaceAll("[^0-9]*", ""));
 				}
-	
-			sala[room] = new Sala (north, clickNorth, south, clickSouth, east, clickEast, west, clickWest, up, clickUp, down, clickDown);
+				
+			sala[room] = new Sala (room, north, clickNorth, south, clickSouth, east, clickEast, west, clickWest, up, clickUp, down, clickDown);
 			i++;
 		}
 	}
