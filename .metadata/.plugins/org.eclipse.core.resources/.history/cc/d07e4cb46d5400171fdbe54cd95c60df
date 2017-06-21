@@ -1,0 +1,22 @@
+import applications.Personagem;
+
+public class Armadura {
+	private int dano;
+	Personagem personagem = new Personagem();
+	
+	public Armadura(){
+		
+	}
+	
+	public int couro(){
+		return dano = 2;
+	}
+	
+	public int metal(){
+		return dano = 3;
+	}
+	
+	public int mithril(){
+		return dano = 5;
+	}
+}

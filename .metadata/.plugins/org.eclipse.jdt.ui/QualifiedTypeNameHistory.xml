@@ -3,7 +3,6 @@
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="model.Labirinto"/>
 <fullyQualifiedTypeName name="com.senac.SimpleJava.Graphics.Resolution"/>
-<fullyQualifiedTypeName name="com.senac.SimpleJava.Graphics.Sprite"/>
 <fullyQualifiedTypeName name="com.senac.SimpleJava.Graphics.Canvas"/>
 <fullyQualifiedTypeName name="model.Porta"/>
 <fullyQualifiedTypeName name="java.util.Random"/>
@@ -16,4 +15,8 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="applications.Porta"/>
+<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+<fullyQualifiedTypeName name="java.awt.Color"/>
+<fullyQualifiedTypeName name="com.senac.SimpleJava.Graphics.Sprite"/>
+<fullyQualifiedTypeName name="com.senac.SimpleJava.Graphics.Color"/>
 </qualifiedTypeNameHistroy>

@@ -1,0 +1,34 @@
+package applications;
+
+import com.senac.SimpleJava.Graphics.Color;
+import com.senac.SimpleJava.Graphics.Resolution;
+import com.senac.SimpleJava.Graphics.Sprite;
+
+public class Inimigo {
+	Sprite i1, i2, i3;
+	int inimigoX = Resolution.MSX.width/5-10, inimigoY = Resolution.MSX.height-157;
+	
+	
+	public Inimigo(){
+		
+	}
+
+	public Sprite goblin(){
+		i1 = new Sprite(5, 5, Color.RED);
+		i1.setPosition(inimigoX, inimigoY);
+		return i1;
+	}
+	
+	public void posicao(){
+		switch(){
+		//east
+		case 1: inimigoX = Resolution.MSX.width/65;
+				inimigoY = Resolution.MSX.height-157;
+		break;
+		//west
+		case 2: inimigoX = Resolution.MSX.width/5;
+				inimigoY = Resolution.MSX.height-157;
+		break;
+		}
+	}
+}

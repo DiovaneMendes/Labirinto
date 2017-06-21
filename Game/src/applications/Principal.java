@@ -20,10 +20,12 @@ public class Principal
 	extends GraphicApplication // Para aplicacoes graficas com SimpleJava
 	implements MouseObserver // Para responder a eventos de mouse na propria applicacao
 	{
-	private Porta porta = new Porta();
+	private Porta porta;
+	private Personagem personagem;
+	private Inimigo inimigo;
 	private Sala sala[] = new Sala [32];
 	private Random gerador = new Random();
-	private int numeroAleatorio = gerador.nextInt(31);
+	private int numeroAleatorio = 28;//gerador.nextInt(31);
 	
 	
 	//==============================CLICK===================================
@@ -80,7 +82,6 @@ public class Principal
 				porta.downX+10 > point.x && porta.downX < point.x+1 &&
 				porta.downY+2 > point.y && porta.downY < point.y+2){
 					numeroAleatorio = sala[numeroAleatorio].clickDown;
-					Console.println(sala[numeroAleatorio].clickDown);
 					if(numeroAleatorio==0){
 						 JOptionPane.showMessageDialog(null,"PARABENS, VOCE VENCEU O LABIRINTO!");
 					}
@@ -91,28 +92,34 @@ public class Principal
 	@Override
 	protected void draw(Canvas canvas) {
 		canvas.clear();
-		//canvas.drawLine(this.center, this.point);
 		
-
 		if(sala[numeroAleatorio].north != null){
 			porta.north().draw(canvas);
+			inimigo.definePosicao(1);
 		}
 		if(sala[numeroAleatorio].south != null){
 			porta.south().draw(canvas);
+			inimigo.definePosicao(2);
 		}
 		if(sala[numeroAleatorio].east != null){
 			porta.east().draw(canvas);
+			inimigo.definePosicao(3);
 		}
 		if(sala[numeroAleatorio].west != null){
 			porta.west().draw(canvas);
+			inimigo.definePosicao(4);
 		}
 		if(sala[numeroAleatorio].up != null){
-			porta.up().draw(canvas);	
+			porta.up().draw(canvas);
+			inimigo.definePosicao(5);
 		}
 		if(sala[numeroAleatorio].down != null){
 			porta.down().draw(canvas);
+			inimigo.definePosicao(6);
 		}
 		
+		personagem.criandoGuerreiro().draw(canvas);
+		inimigo.goblin().draw(canvas);
 	}
 	
 	//===============================LOOP====================================
@@ -126,25 +133,14 @@ public class Principal
 	@Override
 	protected void setup(){
 		lendoArquivo();
-		
-		porta.north();
-		porta.south();
-		porta.east();
-		porta.west();
-		porta.up();
-		porta.down();
-		
+		porta = new Porta();
+		personagem = new Personagem();
+		inimigo = new Inimigo();
 		
 		// ajusta o numero maximo de vezes por segundo que "loop()" sera executado
 		setFramesPerSecond(60);
 		// ajusta a resolucao
 		setResolution(Resolution.LOWRES);
-		int x = getResolution().width / 2;
-		int y = getResolution().height / 2;
-		
-		
-		/*this.center = new Point(x,y);
-		this.point = center;*/
 		
 		addMouseObserver(MouseEvent.CLICK, this);
 		

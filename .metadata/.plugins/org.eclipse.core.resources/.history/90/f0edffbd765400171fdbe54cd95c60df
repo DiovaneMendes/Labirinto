@@ -1,0 +1,30 @@
+package applications;
+
+
+import com.senac.SimpleJava.Graphics.Color;
+import com.senac.SimpleJava.Graphics.Resolution;
+import com.senac.SimpleJava.Graphics.Sprite;
+
+public class Personagem{
+	private int vida = 20;
+	private int tipoArma = 1;
+	private int tipoArmadura;
+	private int armorEsc = 0;
+	private boolean shield;
+	Sprite guerreiro;
+	int personagemX = Resolution.MSX.width/7-2, personagemY = Resolution.MSX.height-157;
+	
+	Arma arma = new Arma();
+	Armadura armadura = new Armadura();
+	Inimigo inimigo = new Inimigo();
+
+	public Personagem(){
+		
+	}
+	
+	public Sprite criandoGuerreiro(){
+		guerreiro = new Sprite(5, 5, Color.BLACK);
+		guerreiro.setPosition(personagemX, personagemY);
+		return guerreiro;
+	}
+}
