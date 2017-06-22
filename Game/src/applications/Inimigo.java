@@ -1,7 +1,5 @@
 package applications;
 
-import java.util.Random;
-
 import com.senac.SimpleJava.Graphics.Color;
 import com.senac.SimpleJava.Graphics.Resolution;
 import com.senac.SimpleJava.Graphics.Sprite;
@@ -10,13 +8,12 @@ public class Inimigo {
 	Sprite i1, i2, i3, sl;
 	int inimigoX, inimigoY;	
 	private int definicao;
-	private Random gerador = new Random();
-	private int qualInimigo = gerador.nextInt(7);
 	
 	public Inimigo(){
 		
 	}
-
+	
+	//Desenhando inimigos com Sprite
 	public Sprite goblin(){
 		posicao();
 		i1 = new Sprite(5, 5, Color.GREEN);
@@ -38,10 +35,12 @@ public class Inimigo {
 		return i3;
 	}
 	
+	//Recebido por parametro o numero o qual representa cada porta 
 	public void definePosicao(int definicao){
 		this.definicao = definicao;		
 	}
 	
+	//Define a posicao do inimigo em frente as portas
 	public void posicao(){
 		switch(definicao){
 		//north
@@ -69,17 +68,5 @@ public class Inimigo {
 				inimigoY = Resolution.MSX.height-128;
 		break;
 		}
-	}
-	
-	public Sprite escolheInimigo(){
-		switch(qualInimigo){
-			case 1: sl = new Sprite (goblin());
-			break;
-			case 2: sl = new Sprite (orc());
-			break;
-			case 3: sl = new Sprite(troll());
-			break;
-		}
-		return sl;
 	}
 }

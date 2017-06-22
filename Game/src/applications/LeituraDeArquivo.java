@@ -2,6 +2,7 @@ package applications;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.Random;
 import java.util.Scanner;
 
 import com.senac.SimpleJava.Console;
@@ -9,7 +10,13 @@ import com.senac.SimpleJava.Console;
 import applications.Sala;
 
 public class LeituraDeArquivo {
+	Random gerador = new Random();
 	
+	public LeituraDeArquivo(){
+		
+	}
+	
+	//Fazendo leitura de arquivo e colocando as informacoes no codigo
 	@SuppressWarnings("resource")
 	public void lendoArquivo(){	
 		Sala sala[] = new Sala[31];
@@ -26,44 +33,59 @@ public class LeituraDeArquivo {
 			Console.print("");
 		}
 		
+		sala[0] = new Sala (null, 0, 0, null, 0, 0, null, 0, 0, null, 0, 0, null, 0, 0, null, 0, 0);
+
 		while (ler.hasNext()) {
 			String north = null, south = null, east = null, west = null, up = null, down = null ;
-			int clickNorth = 0, clickSouth = 0, clickEast = 0, clickWest = 0, clickUp = 0, clickDown = 0;
+			int room = 0, clickNorth = 0, clickSouth = 0, clickEast = 0, clickWest = 0, clickUp = 0, clickDown = 0;
+			int inimigoNorth = 0, inimigoSouth = 0, inimigoEast = 0, inimigoWest = 0, inimigoUp = 0, inimigoDown = 0;
+			
 			linha[i] = ler.next();
-			//String index = String.valueOf(i);	
+			
+			if(linha[i].contains("room")){
+				clickSala = linha[i].substring(linha[i].indexOf("room")+5, linha[i].indexOf("room")+7);
+				room = Integer.parseInt(clickSala.replaceAll("[^0-9]*", ""));
+			}
 			if(linha[i].contains("north")){
 				north = "north";
-				//PEGANDO O NUMERO DA QUE DEVE IR QUAND O FOR CLICADO
+				inimigoNorth = gerador.nextInt(10);
 				clickSala = linha[i].substring(linha[i].indexOf("north")+6, linha[i].indexOf("north")+8);
 				clickNorth = Integer.parseInt(clickSala.replaceAll("[^0-9]*", ""));
 			}
 			if(linha[i].contains("south")){
 				south = "south";
+				inimigoSouth = gerador.nextInt(10);
 				clickSala = linha[i].substring(linha[i].indexOf("south")+6, linha[i].indexOf("south")+8);
 				clickSouth = Integer.parseInt(clickSala.replaceAll("[^0-9]*", ""));
 			}
 			if(linha[i].contains("east")){
 				east = "east";
+				inimigoEast = gerador.nextInt(10);
 				clickSala = linha[i].substring(linha[i].indexOf("east")+5, linha[i].indexOf("east")+7);
 				clickEast = Integer.parseInt(clickSala.replaceAll("[^0-9]*", ""));
 			}
 			if(linha[i].contains("west")){
 				west = "west";
+				inimigoWest = gerador.nextInt(10);
 				clickSala = linha[i].substring(linha[i].indexOf("west")+5, linha[i].indexOf("west")+7);
 				clickWest = Integer.parseInt(clickSala.replaceAll("[^0-9]*", ""));
 			}
 			if(linha[i].contains("up")){
 				up = "up";
+				inimigoUp = gerador.nextInt(10);
 				clickSala = linha[i].substring(linha[i].indexOf("up")+3, linha[i].indexOf("up")+6);
 				clickUp = Integer.parseInt(clickSala.replaceAll("[^0-9]*", ""));
 			}
 			if(linha[i].contains("down")){
 				down = "down";
+				inimigoDown = gerador.nextInt(10);
 				clickSala = linha[i].substring(linha[i].indexOf("down")+5, linha[i].indexOf("down")+7);
 				clickDown = Integer.parseInt(clickSala.replaceAll("[^0-9]*", ""));
 			}
-			
-		sala[i] = new Sala (north, clickNorth, south, clickSouth, east, clickEast, west, clickWest, up, clickUp, down, clickDown);
+
+		sala[room] = new Sala (north, clickNorth, inimigoNorth, south, clickSouth, inimigoSouth,
+							east, clickEast, inimigoEast, west, clickWest, inimigoWest,
+							up, clickUp, inimigoUp, down, clickDown, inimigoDown);
 		i++;
 		}
 	}
