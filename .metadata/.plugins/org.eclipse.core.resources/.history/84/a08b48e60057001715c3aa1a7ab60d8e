@@ -19,7 +19,7 @@ public class Principal
 	private Personagem personagem;
 	private Inimigo inimigo;
 	private LeituraDeArquivo leitura = new LeituraDeArquivo();
-	private Sala sala[] = new Sala [32];
+	Sala sala[] = new Sala [32];
 	private Random gerador = new Random();
 	private int numeroAleatorio = gerador.nextInt(31);
 	
