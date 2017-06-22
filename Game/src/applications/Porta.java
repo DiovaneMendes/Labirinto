@@ -1,7 +1,5 @@
 package applications;
 
-
-
 import com.senac.SimpleJava.Graphics.Color;
 import com.senac.SimpleJava.Graphics.Resolution;
 import com.senac.SimpleJava.Graphics.Sprite;

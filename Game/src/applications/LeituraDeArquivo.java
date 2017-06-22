@@ -11,6 +11,7 @@ import applications.Sala;
 
 public class LeituraDeArquivo {
 	Random gerador = new Random();
+	Sala sala[] = new Sala [32];
 	
 	public LeituraDeArquivo(){
 		
@@ -18,8 +19,7 @@ public class LeituraDeArquivo {
 	
 	//Fazendo leitura de arquivo e colocando as informacoes no codigo
 	@SuppressWarnings("resource")
-	public void lendoArquivo(){	
-		Sala sala[] = new Sala[31];
+	public void lendoArquivo(){
 		String linha[] = new String[31];
 		FileReader texto = null;
 		Scanner ler = null;

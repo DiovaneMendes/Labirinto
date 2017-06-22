@@ -5,7 +5,7 @@ import com.senac.SimpleJava.Graphics.Resolution;
 import com.senac.SimpleJava.Graphics.Sprite;
 
 public class Inimigo {
-	Sprite i1, i2, i3, sl;
+	Sprite i1, i2, i3;
 	int inimigoX, inimigoY;	
 	private int definicao;
 	

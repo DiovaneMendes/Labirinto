@@ -1,0 +1,291 @@
+
+package applications;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Random;
+import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
+import com.senac.SimpleJava.Console;
+import com.senac.SimpleJava.Graphics.Canvas;
+import com.senac.SimpleJava.Graphics.GraphicApplication;
+import com.senac.SimpleJava.Graphics.Point;
+import com.senac.SimpleJava.Graphics.Resolution;
+import com.senac.SimpleJava.Graphics.events.MouseEvent;
+import com.senac.SimpleJava.Graphics.events.MouseObserver;
+
+public class Principal
+	extends GraphicApplication // Para aplicacoes graficas com SimpleJava
+	implements MouseObserver // Para responder a eventos de mouse na propria applicacao
+	{
+	private Porta porta;
+	private Personagem personagem;
+	private Inimigo inimigo;
+	private LeituraDeArquivo leitura = new LeituraDeArquivo();
+	Sala sala[] = new Sala [32];
+	private Random gerador = new Random();
+	private int numeroAleatorio = gerador.nextInt(31);
+	
+	//==============================CLICK===================================
+	@Override
+	public void notify(MouseEvent event, int button, Point point) {
+		if (event == MouseEvent.CLICK){
+			//north
+			if(sala[numeroAleatorio].north != null && 
+				porta.northX+10 > point.x && porta.northX < point.x+1 &&
+				porta.northY+2 > point.y && porta.northY < point.y+2){
+					numeroAleatorio = sala[numeroAleatorio].clickNorth;
+					if(numeroAleatorio==0){
+						 JOptionPane.showMessageDialog(null,"PARABENS, VOCE VENCEU O LABIRINTO!");
+					}
+			}
+			//south
+			if(sala[numeroAleatorio].south != null && 
+				porta.southX+10 > point.x && porta.southX < point.x+1 &&
+				porta.southY+2 > point.y && porta.southY < point.y+2){ 
+					numeroAleatorio = sala[numeroAleatorio].clickSouth;
+					if(numeroAleatorio==0){
+						 JOptionPane.showMessageDialog(null,"PARABENS, VOCE VENCEU O LABIRINTO!");
+					}
+			}
+			//east
+			if(sala[numeroAleatorio].east != null && 
+				porta.eastX+2 > point.x && porta.eastX < point.x+2 &&
+				porta.eastY+10 > point.y && porta.eastY < point.y+1){ 
+					numeroAleatorio = sala[numeroAleatorio].clickEast;
+					if(numeroAleatorio==0){
+						 JOptionPane.showMessageDialog(null,"PARABENS, VOCE VENCEU O LABIRINTO!");
+					}
+			}
+			//west
+			if(sala[numeroAleatorio].west != null && 
+				porta.westX+2 > point.x && porta.westX < point.x+2 &&
+				porta.westY+10 > point.y && porta.westY < point.y+1){ 
+					numeroAleatorio = sala[numeroAleatorio].clickWest;
+					if(numeroAleatorio==0){
+						 JOptionPane.showMessageDialog(null,"PARABENS, VOCE VENCEU O LABIRINTO!");
+					}
+			}
+			//up
+			if(sala[numeroAleatorio].up != null && 
+				porta.upX+10 > point.x && porta.upX < point.x+1 &&
+				porta.upY+2 > point.y && porta.upY < point.y+2){
+					numeroAleatorio = sala[numeroAleatorio].clickUp;
+					if(numeroAleatorio==0){
+						 JOptionPane.showMessageDialog(null,"PARABENS, VOCE VENCEU O LABIRINTO!");
+					}
+			}
+			//down
+			if(sala[numeroAleatorio].down != null && 
+				porta.downX+10 > point.x && porta.downX < point.x+1 &&
+				porta.downY+2 > point.y && porta.downY < point.y+2){
+					numeroAleatorio = sala[numeroAleatorio].clickDown;
+					if(numeroAleatorio==0){
+						 JOptionPane.showMessageDialog(null,"PARABENS, VOCE VENCEU O LABIRINTO!");
+					}
+			}
+		}
+	}
+	//==============================DRAW====================================
+	@Override
+	protected void draw(Canvas canvas) {
+		canvas.clear();
+		/*
+		if(sala[numeroAleatorio].north != null){
+			porta.north().draw(canvas);
+			inimigo.definePosicao(1);
+			
+			if(sala[numeroAleatorio].inimigoNorth == 1){
+				inimigo.goblin().draw(canvas);
+			}
+			else if(sala[numeroAleatorio].inimigoNorth == 2){
+				inimigo.orc().draw(canvas);
+			}
+			else if(sala[numeroAleatorio].inimigoNorth == 3){
+				inimigo.troll().draw(canvas);
+			}
+		}
+		if(sala[numeroAleatorio].south != null){
+			porta.south().draw(canvas);
+			inimigo.definePosicao(2);
+			
+			if(sala[numeroAleatorio].inimigoSouth == 1){
+				inimigo.goblin().draw(canvas);
+			}
+			else if(sala[numeroAleatorio].inimigoSouth == 2){
+				inimigo.orc().draw(canvas);
+			}
+			else if(sala[numeroAleatorio].inimigoSouth == 3){
+				inimigo.troll().draw(canvas);
+			}
+		}
+		if(sala[numeroAleatorio].east != null){
+			porta.east().draw(canvas);
+			inimigo.definePosicao(3);
+			
+			if(sala[numeroAleatorio].inimigoEast == 1){
+				inimigo.goblin().draw(canvas);
+			}
+			else if(sala[numeroAleatorio].inimigoEast == 2){
+				inimigo.orc().draw(canvas);
+			}
+			else if(sala[numeroAleatorio].inimigoEast == 3){
+				inimigo.troll().draw(canvas);
+			}
+		}
+		if(sala[numeroAleatorio].west != null){
+			porta.west().draw(canvas);
+			inimigo.definePosicao(4);
+			
+			if(sala[numeroAleatorio].inimigoWest == 1){
+				inimigo.goblin().draw(canvas);
+			}
+			else if(sala[numeroAleatorio].inimigoWest == 2){
+				inimigo.orc().draw(canvas);
+			}
+			else if(sala[numeroAleatorio].inimigoWest == 3){
+				inimigo.troll().draw(canvas);
+			}
+		}
+		if(sala[numeroAleatorio].up != null){
+			porta.up().draw(canvas);
+			inimigo.definePosicao(5);
+			
+			if(sala[numeroAleatorio].inimigoUp == 1){
+				inimigo.goblin().draw(canvas);
+			}
+			else if(sala[numeroAleatorio].inimigoUp == 2){
+				inimigo.orc().draw(canvas);
+			}
+			else if(sala[numeroAleatorio].inimigoUp == 3){
+				inimigo.troll().draw(canvas);
+			}
+		}
+		if(sala[numeroAleatorio].down != null){
+			porta.down().draw(canvas);
+			inimigo.definePosicao(6);
+			
+			if(sala[numeroAleatorio].inimigoDown == 1){
+				inimigo.goblin().draw(canvas);
+			}
+			else if(sala[numeroAleatorio].inimigoDown == 2){
+				inimigo.orc().draw(canvas);
+			}
+			else if(sala[numeroAleatorio].inimigoDown == 3){
+				inimigo.troll().draw(canvas);
+			}
+		}*/
+		
+		personagem.criandoGuerreiro().draw(canvas);
+	}
+	
+	//===============================LOOP====================================
+	@Override
+	protected void loop() {
+		redraw();
+	}
+	
+	//===============================SETUP====================================
+	
+	@Override
+	protected void setup(){
+		//lendoArquivo();
+		
+		sala[] = sala[];
+		porta = new Porta();
+		personagem = new Personagem();
+		inimigo = new Inimigo();
+		
+		// ajusta o numero maximo de vezes por segundo que "loop()" sera executado
+		setFramesPerSecond(60);
+		// ajusta a resolucao
+		setResolution(Resolution.LOWRES);
+		
+		addMouseObserver(MouseEvent.CLICK, this);
+		
+	}
+	
+	//==============================SALAS======================================
+	
+	public void definindoSala(){
+		for(int i=0; i<32; i++){
+			//sala[i] = sala[i];
+		}
+	}
+	//=========================DEFININDO SALAS=================================
+	//Leitura do arquivo texto e definicao de salas	
+	/*	@SuppressWarnings("resource")
+		public void lendoArquivo(){			
+			String linha[] = new String[31];
+			FileReader texto = null;
+			Scanner ler = null;
+			int i = 0;
+			String clickSala;
+			
+			try{
+				texto = new FileReader("coordenadas.txt");
+				ler = new Scanner(texto).useDelimiter("\n");
+			}catch (FileNotFoundException e){
+				Console.print("");
+			}
+			
+			sala[0] = new Sala (null, 0, 0, null, 0, 0, null, 0, 0, null, 0, 0, null, 0, 0, null, 0, 0);
+
+			while (ler.hasNext()) {
+				String north = null, south = null, east = null, west = null, up = null, down = null ;
+				int room = 0, clickNorth = 0, clickSouth = 0, clickEast = 0, clickWest = 0, clickUp = 0, clickDown = 0;
+				int inimigoNorth = 0, inimigoSouth = 0, inimigoEast = 0, inimigoWest = 0, inimigoUp = 0, inimigoDown = 0;
+				
+				linha[i] = ler.next();
+				
+				if(linha[i].contains("room")){
+					clickSala = linha[i].substring(linha[i].indexOf("room")+5, linha[i].indexOf("room")+7);
+					room = Integer.parseInt(clickSala.replaceAll("[^0-9]*", ""));
+				}
+				if(linha[i].contains("north")){
+					north = "north";
+					inimigoNorth = gerador.nextInt(10);
+					clickSala = linha[i].substring(linha[i].indexOf("north")+6, linha[i].indexOf("north")+8);
+					clickNorth = Integer.parseInt(clickSala.replaceAll("[^0-9]*", ""));
+				}
+				if(linha[i].contains("south")){
+					south = "south";
+					inimigoSouth = gerador.nextInt(10);
+					clickSala = linha[i].substring(linha[i].indexOf("south")+6, linha[i].indexOf("south")+8);
+					clickSouth = Integer.parseInt(clickSala.replaceAll("[^0-9]*", ""));
+				}
+				if(linha[i].contains("east")){
+					east = "east";
+					inimigoEast = gerador.nextInt(10);
+					clickSala = linha[i].substring(linha[i].indexOf("east")+5, linha[i].indexOf("east")+7);
+					clickEast = Integer.parseInt(clickSala.replaceAll("[^0-9]*", ""));
+				}
+				if(linha[i].contains("west")){
+					west = "west";
+					inimigoWest = gerador.nextInt(10);
+					clickSala = linha[i].substring(linha[i].indexOf("west")+5, linha[i].indexOf("west")+7);
+					clickWest = Integer.parseInt(clickSala.replaceAll("[^0-9]*", ""));
+				}
+				if(linha[i].contains("up")){
+					up = "up";
+					inimigoUp = gerador.nextInt(10);
+					clickSala = linha[i].substring(linha[i].indexOf("up")+3, linha[i].indexOf("up")+6);
+					clickUp = Integer.parseInt(clickSala.replaceAll("[^0-9]*", ""));
+				}
+				if(linha[i].contains("down")){
+					down = "down";
+					inimigoDown = gerador.nextInt(10);
+					clickSala = linha[i].substring(linha[i].indexOf("down")+5, linha[i].indexOf("down")+7);
+					clickDown = Integer.parseInt(clickSala.replaceAll("[^0-9]*", ""));
+				}
+	
+			sala[room] = new Sala (north, clickNorth, inimigoNorth, south, clickSouth, inimigoSouth,
+								east, clickEast, inimigoEast, west, clickWest, inimigoWest,
+								up, clickUp, inimigoUp, down, clickDown, inimigoDown);
+			i++;
+		}
+	}*/
+}
+

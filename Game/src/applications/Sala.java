@@ -1,7 +1,6 @@
 package applications;
 
 public class Sala{
-	Porta puerta = new Porta();
 	String north, south, east, west, up, down;
 	int clickNorth, clickSouth, clickEast, clickWest, clickUp, clickDown;
 	int inimigoNorth, inimigoSouth, inimigoEast, inimigoWest, inimigoUp, inimigoDown;
